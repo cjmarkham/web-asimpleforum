@@ -1,13 +1,32 @@
-Forums.Router.map(function () {
+ASF.Router.map(function () {
+    
     this.resource('forums', {
         path: '/'
+    }, function () {
+
+        this.route('view', {
+            path: '/:id'
+        });
+        
     });
+    
 });
 
-Forums.ForumsRoute = Ember.Route.extend({
+ASF.ForumsRoute = Ember.Route.extend({
     model: function () {
-        var data = this.store.find('forum');
-        console.log(data);
-        return data;
+        return this.store.find('forum');
+    }
+});
+
+ASF.ForumsIndexRoute = Ember.Route.extend({
+    model: function () {
+        return this.modelFor('forums');
+    }
+});
+
+ASF.ForumsViewRoute = Ember.Route.extend({
+    model: function (params) {
+        console.log(params);
+        return this.store.find('forum', params.id)
     }
 });

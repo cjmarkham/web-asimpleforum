@@ -7,16 +7,28 @@
 
 <body>
     <script type="text/x-handlebars" data-template-name="forums">
-        <section id="forums">
-            {{#each}}
-                <div>
-                    <p>{{name}}</p>
-                    {{description}}
-                </div>
-            {{/each}}
-        </section>
+        {{outlet}}
     </script>
 
+    <script type="text/x-handlebars" data-template-name="forums/index">
+        {{#each}}
+            <div>
+                {{#link-to "forums.view" id}}
+                    {{name}}
+                {{/link-to}}
+
+                <p>{{description}}</p>
+            </div>
+        {{/each}}
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="forums/view">
+        Viewing: {{name}}
+
+        {{#link-to "forums.index"}}
+            Back to list
+        {{/link-to}}
+    </script>   
 
     <script src="/public/js/jquery.js"></script>
     <script src="/public/js/handlebars.js"></script>
