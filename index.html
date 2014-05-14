@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+</head>
+
+<body>
+    <script type="text/x-handlebars" data-template-name="forums">
+        <section id="forums">
+            {{#each}}
+                <div>
+                    <p>{{name}}</p>
+                    {{description}}
+                </div>
+            {{/each}}
+        </section>
+    </script>
+
+
+    <script src="/public/js/jquery.js"></script>
+    <script src="/public/js/handlebars.js"></script>
+    <script src="/public/js/ember.js"></script>
+    <script src="/public/js/ember-data.js"></script>
+
+    <script src="/public/js/application.js"></script>
+    <script src="/public/js/router.js"></script>
+
+    <script src="/public/js/models/forum.js"></script>
+
+</body>
+</html>
