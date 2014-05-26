@@ -1,0 +1,62 @@
+<div class="row topic {{#if sticky}}sticky{{/if}}" id="topic-{{ id }}">
+    <div class="col-sm-5">
+        {{#link-to "index" class="topic-name preview"}}
+            {{ name }}
+        {{/link-to}}
+
+        <div class="topic-info">
+            {{#if locked}}
+                <em title="Locked" data-toggle="tooltip" class="fa fa-lock"></em >
+            {{/if}}
+
+            {{#if sticky}}
+                <em title="Sticky" data-toggle="tooltip" class="fa fa-thumb-tack"></em >
+            {{/if}}
+        </div>
+
+        <p class="topic-author">
+            {{#link-to "index" class="user-link"}}
+                {{ author.username }}
+            {{/link-to}}
+        </p>
+        <span class="date" title="{{ createdAt }}">
+            {{ createdAt }}
+        </span>
+    </div>
+    <div class="col-sm-3">
+        <p title="Views" data-toggle="tooltip" class="views"><em class="fa fa-eye"></em > {{ views }}</p>
+        <p title="Replies" data-toggle="tooltip" class="replies"><em class="fa fa-pencil"></em > {{ replies }}<p>
+    </div>
+    <div class="text-right col-sm-4">
+        {{#if lastPost}}
+            <p>
+                {{#link-to "index" class="topic-name"}}
+                    {{ lastPost.name }}
+                {{/link-to}}
+            </p>
+            <p> 
+                {{#link-to "index" class="user-link"}}
+                    {{ lastAuthor.username }}
+                {{/link-to}}
+            </p>
+            <span class="date" title="{{ lastPost }}">
+                {{ lastPost.createdAt }}
+            </span>
+        {{else}}
+            <p>
+                {{#link-to "index" class="topic-name"}}
+                    {{ name }}
+                {{/link-to}}
+            </p>
+            <p> 
+                {{#link-to "index" class="user-link"}}
+                    {{ author.username }}
+                {{/link-to}}
+            </p>
+            <span class="date" title="{{ createdAt }}">
+                {{ createdAt }}
+            </span>
+        {{/if}}
+    </div>
+</div>
+<div class="seperator"></div>

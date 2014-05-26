@@ -1,0 +1,87 @@
+<section id="forums">
+    {{#each parent in parentList}}
+        <div class="parent-forum">
+            <header>
+                <h3>
+                    {{ parent.name }}
+                </h3>
+            </header>
+
+            <div class="content">
+                {{#if parent.forums}}
+                    <div class="forums" aria-label="forums">
+                        {{#each child in parent.forums}}
+                            <div class="forum" aria-label="forum">
+                                <div class="row">
+                                
+                                    <div class="col-sm-8">
+                                        <h4>
+                                            {{#link-to "forum.view" child}}
+                                                {{ child.name }}
+                                            {{/link-to}}
+                                        </h4>
+                                        <p class="forum-description">
+                                            {{ child.description }}
+                                        </p>
+                                    </div>
+
+                                    <div class="col-sm-4 text-right hidden-xs">
+                                        {{#if child.lastTopic.name}}
+                                            <div class="clearfix">
+
+                                                <div class="marginLeft10 pull-right hidden-xs">
+                                                    {{#link-to "index" class="user-link"}}
+                                                        <img class="avatar tiny inline" src="/uploads/avatars/{{ child.lastAuthor.username }}/avatar.png" alt="" />
+                                                    {{/link-to}}
+                                                </div>
+
+                                                <div class="pull-right">
+                                                    <p>
+                                                        {{#link-to "index" class="topic-name orange"}}
+                                                            {{ child.lastTopic.name }}
+                                                        {{/link-to}}
+                                                    </p>
+                                                    <p title="" class="date inline">
+                                                        {{ child.lastPost.createdAt }}
+                                                    </p>
+                                                </div>
+                                                
+                                            </div>
+                                        {{else}}
+                                            <p>
+                                                <a href="javascript:void(0)" class="topic-name">
+                                                    No topics
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="javascript:void(0)" class="user-link">
+                                                    Be the first
+                                                </a>
+                                            </p>
+                                        {{/if}}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{#if child.forums }}
+                                <div class="row">
+                                    <div class="col-sm-12 subforum-list">
+                                        Subforums: 
+                                        {{#each subchild in child.forums}}
+                                            {{#link-to "index"}}
+                                                {{ subchild.name }}
+                                            {{/link-to}}
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            {{/if}}
+
+                        {{/each}}
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    {{/each}}
+
+</section>

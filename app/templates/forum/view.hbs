@@ -1,0 +1,18 @@
+<div id="topic-showing-count" class="alert alert-warning">
+    <small>Showing <span id="topic-count">0</span> of 0 Total</small>
+</div>
+
+<section id="topics">
+    <header>
+        <h5>{{ name }}</h5>
+    </header>
+    <div class="content">
+        {{#each topics}}
+            {{ partial "partials/topic/list" }}
+        {{/each}}
+    </div>
+</section>
+
+<button class="btn btn-orange">
+    New topic
+</button>

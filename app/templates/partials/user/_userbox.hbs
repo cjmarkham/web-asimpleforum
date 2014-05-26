@@ -1,0 +1,46 @@
+<section id="userbox" class="box">
+    <header>
+        <h3>Account Control</h3>
+    </header>
+    <div class="content">
+        {{#if App.user}}
+            LOGGED IN
+        {{else}}
+            <form {{action "login" on="submit"}}>
+                {{#if failedLogin}}
+                    <p class="alert alert-danger">
+                        Login failed.
+                    </p>
+                {{/if}}
+                <div class="form-group">
+                    <label>Username</label>
+                    {{input placeholder="Username" class="form-control" value=username type="text" required="true"}}
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    {{input placeholder="Password" class="form-control" value=password type="password" required="true"}}
+                    <p class="help text-right">
+                        {{#link-to "index"}}
+                            Forgot password?
+                        {{/link-to}}
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" {{bind-attr disabled="processing"}} class="btn btn-orange">
+                        {{#if processing}}
+                            <em class="fa fa-spin fa-spinner"></em>
+                        {{else}}
+                            Login
+                        {{/if}}
+                    </button>
+
+                    {{#link-to "index" class="btn btn-orange"}}
+                        Signup
+                    {{/link-to}}
+                </div>
+            </form>
+        {{/if}}
+    </div>
+</section>
+

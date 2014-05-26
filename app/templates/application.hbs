@@ -1,0 +1,74 @@
+<a target="_blank" href="https://github.com/cjmarkham/asimpleforum">
+    <img id="fork" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub" />
+</a>
+
+<div id="message-block"></div>
+
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div id="logo" class="col-sm-9 col-xs-12">
+
+                <h1 class="text-left">
+                    {{#link-to "index"}}
+                        <img width="318" height="52" src="/images/logo.png" title="A Simple Forum" alt="A Simple Forum" />
+                    {{/link-to}}
+                </h1>
+
+            </div>
+            <div id="quick-search" role="search" class="col-sm-3 hidden-xs">
+                <form data-event="submit" data-action="search" role="form" name="search-form" method="post" action="javascript:void(0)" class="form-horizontal">
+                    <div class="form-group">
+                        <input type="text" name="query" class="typeahead form-control" autocomplete="off" placeholder="Quick search" />
+                        <button class="fa fa-search">&nbsp;</button>
+                        <select id="search-form-indicator">
+                            <option selected value="this">This forum</option>
+                            <option value="all">All forums</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container hidden-sm hidden-xs" role="navigation">
+        <div id="main-nav" class="row">
+            <ul class="list-unstyled list-inline col-md-9">
+                <li>
+                    <h2>
+                        {{#link-to index}}
+                            Forums
+                        {{/link-to}}
+                    </h2>   
+                </li>
+            </ul>
+            <div id="nav-quick-access" class="col-md-3 pull-right hidden-sm hidden-xs">
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container" id="main">
+
+    <nav id="breadcrumbs">
+        <ul class="list-unstyled list-inline">
+            <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/" itemprop="url">
+                    <span itemprop="title">Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+
+    <div class="row">
+        <aside id="sidebar" class="col-md-3 hidden-xs hidden-sm">
+            {{partial "partials/user/userbox"}}
+        </aside>
+
+        <div class="col-md-9" id="main-wrapper">
+            {{outlet}}
+        </div>
+    </div>
+</div>
